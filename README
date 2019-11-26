@@ -1,0 +1,18 @@
+*******************************************************************************
+*
+*						CS370 Programming Project 2
+*
+*******************************************************************************
+
+CREATED: 2019-11-25
+LAST MODIFIED: 2019-11-25
+
+
+AUTHOR: Brian Metzger (metzgerb@oregonstate.edu)
+
+
+PROJECT DESCRIPTION: This program generates QR codes and Time-Based One Time
+Passwords (TOTP) for use with the Google Authenticator. The project is written
+in Python.
+
+INSTRUCTIONS: 
