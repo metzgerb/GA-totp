@@ -13,6 +13,6 @@ AUTHOR: Brian Metzger (metzgerb@oregonstate.edu)
 
 PROJECT DESCRIPTION: This program generates QR codes and Time-Based One Time
 Passwords (TOTP) for use with the Google Authenticator. The project is written
-in Python.
+in Python 3.
 
 INSTRUCTIONS: 
