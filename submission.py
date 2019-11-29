@@ -10,7 +10,7 @@ Created: 2019-11-25
 Last Modified: 2019-11-25
 """
 
-import sys, os, qrcode, time, urllib.parse, base64
+import sys, os, qrcode, time, urllib.parse, base64, hashlib, hmac
 
 
 """
@@ -56,15 +56,18 @@ Inputs: a string representing the secret key.
 Outputs: outputs an OTP every 30 seconds to stdout
 """
 def get_otp(secret):
-     #get current time
-    current_time = time.time()
-    
     #get time step by dividing current time since epoch by 30 seconds using floor division
-    time_step = current_time//30
+    time_step = int(time.time())//30
+    
+    #convert key and timestep to bytes
+    key = bytes(secret, "utf-8")
+    time_interval = time_step.to_bytes(8, byteorder="big")
     
     #generate SHA-1 hash
-    
-    
+    hash = hmac.new(key, time_interval, hashlib.sha1)
+    print(hash.digest())
+    print(hash.digest()[1])
+    #get last 4 bytes of hash
     #truncate hash to 6 digits
     
     
