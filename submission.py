@@ -64,9 +64,12 @@ def get_otp(secret):
     time_interval = time_step.to_bytes(8, byteorder="big")
     
     #generate SHA-1 hash
-    hash = hmac.new(key, time_interval, hashlib.sha1)
-    print(hash.digest())
-    print(hash.digest()[1])
+    hash = hmac.new(key, time_interval, hashlib.sha1).hexdigest()
+    print(hash)
+    
+    #determine offset
+    print(int(hash[-1],16))
+    
     #get last 4 bytes of hash
     #truncate hash to 6 digits
     
