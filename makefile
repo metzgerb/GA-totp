@@ -6,5 +6,5 @@ qr: submission.py
 	chmod +x $^
 	
 clean: 
-	pip3 uninstall --user qrcode[pil]
+	pip3 uninstall qrcode[pil]
 	chmod -x ./submission.py
