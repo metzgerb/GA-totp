@@ -5,7 +5,7 @@ all: qr
 qr: submission.py
 	python3 -m venv ./venv
 	source ./venv/bin/activate
-	pip3 install --user qrcode[pil]
+	pip3 install qrcode[pil]
 	dos2unix $^
 	chmod +x $^
 	
