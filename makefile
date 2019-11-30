@@ -10,7 +10,6 @@ qr: submission.py
 	chmod +x $^
 	
 clean: 
-	deactivate
 	chmod -x ./submission.py
 	rm -rf qr.jpg
 	rm -rf ./venv
