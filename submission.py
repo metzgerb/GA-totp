@@ -7,10 +7,20 @@ API.
 Author: Brian Metzger (metzgerb@oregonstate.edu)
 Course: CS370 (Fall 2019)
 Created: 2019-11-25
-Last Modified: 2019-11-25
+Last Modified: 2019-11-30
 """
 
-import sys, os, qrcode, time, urllib.parse, base64, hashlib, hmac
+import sys, os, qrcode, time, urllib.parse, base64, hashlib, hmac, signal
+
+
+"""
+Function Name: interrupt_handler
+Description: Catches a signal and exits quietly
+Inputs: a signal code and frame
+Outputs: nothing
+"""
+def interrupt_handler(signal, frame):
+    sys.exit(0)
 
 
 """
@@ -19,9 +29,9 @@ Description: generates an image file with a QR code to be used with Google
 Authenticator. The QR code is an encoded URI.
 Inputs: a string representing an account, a string representing the issuer,
 a string representing the secret key.
-Outputs: JPG file containing a QR code
+Outputs: JPG file containing a QR code in current directory (overwrites existing qr.jpg file)
 """
-def generate_qr(account, issuer, secret):
+def generate_qr(account = "ExamplePerson@Example.com", issuer = "Example Co", secret = "This is a Test!"):
     #build initial uri string for QR encoding
     uri_string = "otpauth://totp/"
     
@@ -55,7 +65,10 @@ Description: generates an OTP that matches Google Authenticator's OTP for each
 Inputs: a string representing the secret key.
 Outputs: outputs an TOTP every 30 seconds to stdout
 """
-def get_otp(secret):
+def get_otp(secret = "This is a Test!"):
+    #register signal handler to catch keyboard interrupt
+    signal.signal(signal.SIGINT, interrupt_handler)
+    
     #loop until interrupted by keybord
     while(True):
         #get time step by dividing current time since epoch by 30 seconds using floor division
@@ -89,26 +102,48 @@ def get_otp(secret):
 
 
 """
-Description: intial code that validates the commandline arguments used
-    and calls the other functions to create the connections and save files
-Inputs: takes 1 argument (submission.py --command)
+Function Name: usage
+Description: prints the syntax and argument information for the program
+Inputs: takes 0 arguments
 Outputs: returns nothing
 """
-if __name__ == "__main__":
-    #set configs
-    account = "ExamplePerson@Example.com"
-    issuer = "Example Co"
-    secret = "This is a Test!"
-    
+def usage():
+    print("USAGE:\t%s --command [secret] [account] [issuer]" % sys.argv[0])
+    print("COMMANDS:")
+    print("\t--generate-qr\tcreates a .JPG file containing a QR code using optional parameters [secret], [account], and [issuer]")
+    print("\t--get-otp\tcontiuously generates TOTP codes using optional parameter [secret]")
+    print("\t--help\t\tprints this usage information")
+    print("OPTIONAL:")
+    print("\t[secret]\tA secret key for calculating codes (default: 'This is a Test!')")
+    print("\t[account]\tThe account you wish to generate qr code for (default: 'ExamplePerson@Example.com')")
+    print("\t[issuer]\tThe company issuing the account (default: 'Example Co')")
+
+
+"""
+Description: intial code that validates the commandline arguments used
+    and calls the other functions to create the connections and save files
+Inputs: takes 1 argument (submission.py --command) and up to 3 optional arguments
+Outputs: returns nothing
+"""
+if __name__ == "__main__":    
+    #check for help command
+    if len(sys.argv) == 2 and sys.argv[1] == "--help":
+        print("")
+        usage()
     #check total argument count
-    if len(sys.argv) != 2:
-        print("USAGE: %s --command" % sys.argv[0])
+    elif len(sys.argv) < 2 or len(sys.argv) > 5:
+        print("syntax error: invalid number of arguments\n")
+        usage()
     #check that control port number is actually a number
     elif not sys.argv[1] == "--generate-qr" and not sys.argv[1] == "--get-otp":
         print("syntax error: invalid command")
-    #everything is ok, call main function
+        usage()
+    #correct command check for no optional arguments
     else:
         if sys.argv[1] == "--generate-qr":
-            generate_qr(account, issuer, secret)
+            generate_qr(*sys.argv[2:])
+        elif len(sys.argv) <= 3:
+            get_otp(*sys.argv[2:])
         else:
-            get_otp(secret)
+            print("syntax error: invalid number of optional arguments\n")
+            usage()  
