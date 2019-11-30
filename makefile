@@ -7,6 +7,6 @@ qr: submission.py
 	
 clean: 
 	pip3 uninstall -y qrcode
-	pip3 uninstall -y pil
+	pip3 uninstall -y pillow
 	chmod -x ./submission.py
 	rm -rf qr.jpg
