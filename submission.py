@@ -56,6 +56,8 @@ def generate_qr(account = "ExamplePerson@Example.com", issuer = "Example Co", se
     
     #save img
     img.save("qr.jpg")
+    
+    print("QR code successfully created: %s\\qr.jpg" % os.getcwd())
 
 
 """
@@ -68,6 +70,8 @@ Outputs: outputs an TOTP every 30 seconds to stdout
 def get_otp(secret = "This is a Test!"):
     #register signal handler to catch keyboard interrupt
     signal.signal(signal.SIGINT, interrupt_handler)
+    
+    print("Outputting TOTP Codes (Press CTRL + C to stop)...\n")
     
     #loop until interrupted by keybord
     while(True):
