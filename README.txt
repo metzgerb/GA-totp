@@ -54,7 +54,7 @@ WITHOUT USING MAKEFILE:
 		b. pip3 install qrcode[pil]
 	
 	4. [POSIX ONLY] add executable permissions to submission.py:
-		a. chmod +x .\submission.py
+		a. chmod +x ./submission.py
 	
 	5. With active virtual environment, run submission.py with the appropriate
 		commands (see USAGE INSTRUCTIONS below)
@@ -86,7 +86,7 @@ USING MAKEFILE:
 		a. deactivate
 		
 	2. Run the attached makefile with the command `make clean`
-		a. make will remove the executable permission on the submission.py
+		a. make will remove the executable permission from submission.py
 		b. make will delete 'qr.jpg' if it exists in the current directory
 		c. make will delete the python3 virtual environment
 	
@@ -102,7 +102,7 @@ WITHOUT USING MAKEFILE:
 		a. [POSIX] rm -rf ./qr.jpg
 		   [WINDOWS] del .\qr.jpg
 	
-	3. [POSIX ONLY] add executable permissions to submission.py
-		a. chmod +x .\submission.py
+	3. [POSIX ONLY] remove executable permissions from submission.py
+		a. chmod -x ./submission.py
 		
 	4. Remove the source files if desired
