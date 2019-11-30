@@ -1,5 +1,3 @@
-SHELL := /bin/bash
-
 all: qr
 
 qr: submission.py

@@ -130,6 +130,7 @@ Inputs: takes 1 argument (submission.py --command) and up to 3 optional argument
 Outputs: returns nothing
 """
 if __name__ == "__main__":    
+    print(sys.executable)
     #check for help command
     if len(sys.argv) == 2 and sys.argv[1] == "--help":
         print("")
