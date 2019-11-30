@@ -12,7 +12,7 @@ AUTHOR: Brian Metzger (metzgerb@oregonstate.edu)
 
 PROJECT DESCRIPTION: This program generates QR codes and Time-Based One Time
 Passwords (TOTPs) for use with the Google Authenticator. The project is written
-in Python 3. Testing done with Python 3.6.
+in Python 3. Testing done with Python 3.6 on Windows and Flip.
 
 
 
@@ -45,10 +45,12 @@ WITHOUT USING MAKEFILE:
 	2. Create Virtual Environment:
 		a. [POSIX] python3 -m venv ./venv
 		   [WINDOWS] python -m venv .\venv
+						OR
+		   [WINDOWS] python3 -m venv .\venv
 	
 	3. Activate virtual environment and install dependencies:
 		a. [POSIX] source ./venv/bin/activate
-		   [WINDOWS] .\venv\bin\activate.bat
+		   [WINDOWS] .\venv\Scripts\activate.bat
 		b. pip3 install qrcode[pil]
 	
 	4. [POSIX ONLY] add executable permissions to submission.py:
@@ -94,7 +96,7 @@ WITHOUT USING MAKEFILE:
 	1. Deactivate and delete virtual environment directory:
 		a. deactivate
 		b. [POSIX] rm -rf ./venv
-		   [WINDOWS] del .\venv
+		   [WINDOWS] del .\venv ('Y' to confirm)
 	
 	2. Delete qr.jpg file:
 		a. [POSIX] rm -rf ./qr.jpg
