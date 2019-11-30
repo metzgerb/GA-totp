@@ -1,4 +1,4 @@
-#!/usr/bin/perl -e$_=$ARGV[0];exec(s/\w+$/venv/bin/python3/r,$_)
+#!/usr/bin/awk BEGIN{a=ARGV[1];b="";for(i=1;i<ARGC;i++){b=b"\t"ARGV[i];}sub(/[a-z_.\-]+$/,"venv/bin/python3",a);system(a""b)}
 
 """Program Name: submission.py
 Python Version: 3
