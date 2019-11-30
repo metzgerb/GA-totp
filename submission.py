@@ -1,4 +1,4 @@
-#!./venv/bin/ python3
+#!/usr/bin/awk BEGIN{a=ARGV[1];sub(/[a-z_.]+$/,"venv/bin/python3",a);system(a"\t"ARGV[1])}
 
 """Program Name: submission.py
 Python Version: 3
