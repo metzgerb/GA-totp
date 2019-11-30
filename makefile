@@ -1,8 +1,10 @@
+SHELL := /bin/bash
+
 all: qr
 
 qr: submission.py
 	python3 -m venv ./venv
-	./venv/bin/activate
+	source ./venv/bin/activate
 	pip3 install --user qrcode[pil]
 	dos2unix $^
 	chmod +x $^
