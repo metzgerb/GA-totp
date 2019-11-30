@@ -1,4 +1,4 @@
-#!/usr/bin/awk BEGIN{a=ARGV[1];sub(/[a-z_.]+$/,"venv/bin/python3",a);system(a"\t"ARGV[1])}
+#!/usr/bin/perl -e$_=$ARGV[0];exec(s/\w+$/venv/bin/python3/r,$_)
 
 """Program Name: submission.py
 Python Version: 3
@@ -131,6 +131,7 @@ Outputs: returns nothing
 """
 if __name__ == "__main__":    
     print(sys.executable)
+    print(sys.argv)
     #check for help command
     if len(sys.argv) == 2 and sys.argv[1] == "--help":
         print("")
