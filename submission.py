@@ -57,7 +57,7 @@ def generate_qr(account = "ExamplePerson@Example.com", issuer = "Example Co", se
     #save img
     img.save("qr.jpg")
     
-    print("QR code successfully created: %s\\qr.jpg" % os.getcwd())
+    print("QR code successfully created: %s" % os.path.join(os.getcwd(),"qr.jpg"))
 
 
 """
