@@ -1,5 +1,7 @@
 #!/usr/bin/awk BEGIN{a=ARGV[1];b="";for(i=1;i<ARGC;i++){b=b"\t"ARGV[i];}sub(/[a-z_.\-]+$/,"venv/bin/python3",a);system(a""b)}
 
+#shebang source: https://stackoverflow.com/questions/33225082/relative-shebang-how-to-write-an-executable-script-running-portable-interpreter/33225083#33225083
+
 """Program Name: submission.py
 Python Version: 3
 Description: Generates QR codes and TOTPs for use with Google's Authenticator
@@ -130,8 +132,6 @@ Inputs: takes 1 argument (submission.py --command) and up to 3 optional argument
 Outputs: returns nothing
 """
 if __name__ == "__main__":    
-    print(sys.executable)
-    print(sys.argv)
     #check for help command
     if len(sys.argv) == 2 and sys.argv[1] == "--help":
         print("")
