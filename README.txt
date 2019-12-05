@@ -34,6 +34,12 @@ USING MAKEFILE:
 	
 	2. When `make` finishes, run submission.py with the appropriate commands
 		(see USAGE INSTRUCTIONS below)
+		a. [POSIX] ./submission.py --generate-qr
+						OR		
+		   [POSIX] python3 ./submission.py --generate-qr
+		   [WINDOWS] python .\submission.py --generate-qr
+						OR
+		   [WINDOWS] python3 .\submission.py --generate-qr
 		
 		NOTE:[POSIX] The shebang at the top of submission.py points to the created 
 			virtual environment. To override, specify the path/interpreter 
@@ -58,6 +64,12 @@ WITHOUT USING MAKEFILE:
 	
 	5. With active virtual environment, run submission.py with the appropriate
 		commands (see USAGE INSTRUCTIONS below)
+		a. [POSIX] ./submission.py --generate-qr
+						OR		
+		   [POSIX] python3 ./submission.py --generate-qr
+		   [WINDOWS] python .\submission.py --generate-qr
+						OR
+		   [WINDOWS] python3 .\submission.py --generate-qr
 		
 		NOTE:[POSIX] The shebang at the top of submission.py points to the created 
 			  virtual environment. To override, specify the path/interpreter 
